@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_DB: "adv"
+      POSTGRES_DB: "postgres"
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "admin"
     ports:
-      - "5433:5432"
+      - "5432:5432"

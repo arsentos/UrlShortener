@@ -1,11 +1,8 @@
 package com.url.UrlShortener.Controller;
 
-import com.url.UrlShortener.Entity.Link;
-import com.url.UrlShortener.Entity.LinkDto;
+import com.url.UrlShortener.Entity.LinkRequest;
 import com.url.UrlShortener.Services.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,8 +11,8 @@ public class LinkController {
     LinkService linkService;
 
     @PostMapping("/generate")
-    public String generate(@RequestBody String url) {
-        return linkService.createNewLink(url);
+    public String generate(@RequestBody LinkRequest linkRequest) {
+        return linkService.createNewLink(linkRequest.getUrl());
     }
 
     @GetMapping("/get/{url}")

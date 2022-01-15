@@ -2,6 +2,7 @@ package com.url.UrlShortener.Services;
 
 import com.url.UrlShortener.Entity.Link;
 import com.url.UrlShortener.Repository.LinkRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -20,7 +21,7 @@ public class LinkService {
     }
 
     public String getOriginalLink(String url) {
-        return linkRepository.findByShortUrl(url).get().getShortUrl();
+        return linkRepository.findByShortUrl(url).get().getOriginal();
     }
 
     public static String getRandomString(int length){
@@ -34,6 +35,7 @@ public class LinkService {
         return sb.toString();
     }
 
+    @Autowired
     public void setLinkRepository(LinkRepository linkRepository) {
         this.linkRepository = linkRepository;
     }
